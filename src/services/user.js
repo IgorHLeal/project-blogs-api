@@ -18,6 +18,11 @@ const userService = {
 
     return { token };
   },
+
+  getAll: async () => {
+    const listUsers = await User.findAll({ attributes: { exclude: 'password' } });
+    return listUsers;
+  },
 };
 
 module.exports = userService;
