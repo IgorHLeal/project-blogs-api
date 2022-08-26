@@ -5,7 +5,15 @@ module.exports = (sequelize, DataTypes) => {
     email: { type: DataTypes.INTEGER, unique: true },
     password: DataTypes.STRING,
     image: DataTypes.STRING,
+  },
+  {
+    timestamps: false,
   });
+
+  User.associate = (models) => {
+    User.hasMany(models.BlogPost,
+      { foreignKey: 'userId', as: 'BlogPost' });
+  };
 
   return User;
 };
