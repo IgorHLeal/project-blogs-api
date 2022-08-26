@@ -33,3 +33,6 @@ const userValidations = async (req, res, next) => {
 };
 
 module.exports = userValidations;
+
+// Referências:
+// Alguns trechos de código da Função userValidations baseados no runSchema do Projeto StoreManager

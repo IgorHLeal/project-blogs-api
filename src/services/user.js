@@ -23,6 +23,14 @@ const userService = {
     const listUsers = await User.findAll({ attributes: { exclude: 'password' } });
     return listUsers;
   },
+
+  getById: async (id) => {
+    const user = await User.findOne({ where: { id }, attributes: { exclude: 'password' } });
+    return user;
+
+    // Outra forma de desenvolver usando o findByPk
+    // const user = await User.findByPk(id, { attributes: { exclude: 'password' } });
+  },
 };
 
 module.exports = userService;
