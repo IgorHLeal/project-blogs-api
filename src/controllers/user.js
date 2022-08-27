@@ -1,14 +1,14 @@
 const userService = require('../services/user');
 
 const userController = {
-  create: async (req, res, next) => {
-    try {
+  create: async (req, res) => {
       const token = await userService.create(req.body);
-
-      return res.status(201).json(token);
-      } catch (error) {
-        return next(error);
+      if (token.error) {
+        return res.status(token.error.code)
+        .json({ message: token.error.message });
       }
+
+      return res.status(201).json({ token });
   },
 
   getAll: async (_req, res) => {
