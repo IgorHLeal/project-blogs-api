@@ -1,9 +1,10 @@
 const { Router } = require('express');
-const categoryController = require('../controllers/category');
+const { create, getAll } = require('../controllers/category');
 const tokenAuth = require('../middlewares/auth');
 
 const userRouter = Router();
 
-userRouter.post('/', tokenAuth, categoryController.create);
+userRouter.post('/', tokenAuth, create);
+userRouter.get('/', tokenAuth, getAll);
 
 module.exports = userRouter;
