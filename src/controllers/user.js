@@ -4,6 +4,7 @@ const userController = {
   create: async (req, res) => {
       const token = await userService.create(req.body);
       if (token.error) {
+        // error.code e error.message são acessados através do userService, que por sua vez tem acesso a userValidation.js
         return res.status(token.error.code)
         .json({ message: token.error.message });
       }
